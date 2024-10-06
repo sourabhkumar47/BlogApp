@@ -16,6 +16,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -48,9 +49,16 @@ fun BlogListScreen(
         }
 
         item {
-            Box(modifier = Modifier.fillMaxWidth()) {
-                if (isLoading) {
+            if (isLoading) {
+                Box(modifier = Modifier.fillMaxWidth()) {
                     CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
+            } else {
+                // Trigger load more when the user scrolls to the end
+                LaunchedEffect(blogs) {
+                    if (blogs.isNotEmpty()) {
+                        viewModel.loadMoreBlogs()
+                    }
                 }
             }
         }

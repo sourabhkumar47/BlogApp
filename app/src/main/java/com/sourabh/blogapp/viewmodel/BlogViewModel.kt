@@ -27,7 +27,7 @@ class BlogViewModel : ViewModel() {
     }
 
     private fun getBlogs() {
-        if (isLastPage) return
+        if (isLastPage || _isLoading.value) return
 
         viewModelScope.launch {
             _isLoading.value = true
@@ -37,7 +37,7 @@ class BlogViewModel : ViewModel() {
                 if (blogResponse.isEmpty()) {
                     isLastPage = true
                 } else {
-                    _blogs.value = blogResponse
+                    _blogs.value += blogResponse
                     currentPage++
                 }
             } catch (e: Exception) {
