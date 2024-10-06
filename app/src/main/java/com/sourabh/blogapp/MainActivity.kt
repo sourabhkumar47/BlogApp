@@ -12,9 +12,9 @@ import com.sourabh.blogapp.viewmodel.BlogViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         setContent {
-            BlogAppTheme {
+            BlogAppTheme(darkTheme = false) {
 
                 val navController = rememberNavController()
                 val blogViewModel: BlogViewModel = viewModel()
