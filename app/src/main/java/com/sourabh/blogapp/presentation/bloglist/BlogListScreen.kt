@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.sourabh.blogapp.data.remote.responseItem
 import com.sourabh.blogapp.viewmodel.BlogViewModel
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun BlogListScreen(
@@ -30,12 +32,12 @@ fun BlogListScreen(
     ) {
         items(blogs) { blog ->
             BlogListItem(blog) {
-                // Navigate to blog details when clicked
-                navController.navigate("blogDetail/${blog.link}")
+                // Encode URL before navigating to the detail screen
+                val encodedUrl = URLEncoder.encode(blog.link, StandardCharsets.UTF_8.toString())
+                navController.navigate("blogDetail/$encodedUrl")
             }
         }
 
-        // Load more when scrolled to the end
         item {
             if (blogs.isNotEmpty()) {
                 LaunchedEffect(Unit) {

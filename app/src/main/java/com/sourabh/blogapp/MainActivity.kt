@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.sourabh.blogapp.presentation.bloglist.BlogListScreen
 import com.sourabh.blogapp.ui.theme.BlogAppTheme
@@ -22,10 +23,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BlogAppTheme {
+
                 val navController = rememberNavController()
-                BlogListScreen(
+                val blogViewModel: BlogViewModel = viewModel()
+
+                BlogAppNavHost(
                     navController = navController,
-                    viewModel = BlogViewModel()
+                    viewModel = blogViewModel
                 )
             }
         }
