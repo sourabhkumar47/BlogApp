@@ -11,7 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.sourabh.blogapp.presentation.bloglist.BlogListScreen
 import com.sourabh.blogapp.ui.theme.BlogAppTheme
+import com.sourabh.blogapp.viewmodel.BlogViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +22,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BlogAppTheme {
-
+                val navController = rememberNavController()
+                BlogListScreen(
+                    navController = navController,
+                    viewModel = BlogViewModel()
+                )
             }
         }
     }
