@@ -32,7 +32,6 @@ fun BlogListScreen(
     ) {
         items(blogs) { blog ->
             BlogListItem(blog) {
-                // Encode URL before navigating to the detail screen
                 val encodedUrl = URLEncoder.encode(blog.link, StandardCharsets.UTF_8.toString())
                 navController.navigate("blogDetail/$encodedUrl")
             }

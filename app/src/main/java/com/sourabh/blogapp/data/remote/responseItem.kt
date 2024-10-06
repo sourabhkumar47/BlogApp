@@ -1,7 +1,5 @@
 package com.sourabh.blogapp.data.remote
 
-import kotlin.collections.Collection
-
 data class responseItem(
     val _links: Links,
     val aioseo_notices: List<Any>,
@@ -43,10 +41,6 @@ data class About(
 
 data class Author(
     val embeddable: Boolean,
-    val href: String
-)
-
-data class Collection(
     val href: String
 )
 

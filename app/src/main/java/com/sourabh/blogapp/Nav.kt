@@ -16,7 +16,7 @@ fun BlogAppNavHost(navController: NavHostController, viewModel: BlogViewModel) {
         }
         composable("blogDetail/{url}") { backStackEntry ->
             val url = backStackEntry.arguments?.getString("url")
-            BlogDetailScreen(navController, url ?: "")
+            BlogDetailScreen(url ?: "")
         }
     }
 }
