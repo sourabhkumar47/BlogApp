@@ -91,9 +91,9 @@ fun BlogListScreen(
                         }
                     }
 
-                    if (isLoading) {
-                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                    }
+//                    if (isLoading) {
+//                        CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+//                    }
                 }
             }
         }
