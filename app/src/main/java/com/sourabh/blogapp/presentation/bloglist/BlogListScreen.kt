@@ -62,7 +62,7 @@ fun BlogListScreen(
             if (showInitialLoading) {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             } else {
-                if (isOffline) {a
+                if (isOffline) {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
