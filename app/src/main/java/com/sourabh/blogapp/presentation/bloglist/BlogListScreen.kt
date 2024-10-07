@@ -40,7 +40,7 @@ fun BlogListScreen(
     var showInitialLoading by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
-        delay(2000)
+        delay(50)
         showInitialLoading = false
     }
 
@@ -54,14 +54,13 @@ fun BlogListScreen(
                 ),
                 actions = {
                     IconButton(onClick = {
-
+                        // For further improvement
                     }) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_bookmark_added_24),
                             contentDescription = "Refresh",
                             tint = Color.White,
-                            modifier = Modifier
-                                .size(30.dp)
+                            modifier = Modifier.size(30.dp)
                         )
                     }
                 }

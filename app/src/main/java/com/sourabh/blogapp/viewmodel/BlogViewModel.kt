@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.sourabh.blogapp.data.remote.responseItem
 import com.sourabh.blogapp.data.repository.BlogRepository
 import com.sourabh.blogapp.utility.NetworkUtils
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -41,7 +42,7 @@ class BlogViewModel(application: Application) : AndroidViewModel(application) {
     private fun getBlogs() {
         if (isLastPage || _isLoading.value || _isOffline.value) return
 
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _isLoading.value = true
             try {
                 val blogResponse = repository.getBlogs(perPage, currentPage)
