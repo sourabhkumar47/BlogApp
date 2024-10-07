@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -48,9 +49,22 @@ fun BlogListScreen(
             TopAppBar(
                 title = { Text(text = "Blog App") },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
+                    containerColor = colorResource(id = R.color.grey),
                     titleContentColor = Color.White
-                )
+                ),
+                actions = {
+                    IconButton(onClick = {
+
+                    }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.baseline_bookmark_added_24),
+                            contentDescription = "Refresh",
+                            tint = Color.White,
+                            modifier = Modifier
+                                .size(30.dp)
+                        )
+                    }
+                }
             )
         }
     ) { paddingValues ->
